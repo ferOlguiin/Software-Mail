@@ -43,7 +43,7 @@ app.post("/sendmailintegral", async (req, res) => {
                 <main>
                   <h2 style="margin-top:19px; margin-bottom:13px; text-decoration:underline;">Dejaron los siguientes datos a través del formulario de la web</h2>
                   ${
-                    container.map((item) => `<p style="margin:0px; font-size: 16px; color: #000000">${item}</p>`)
+                    container.map((item) => `<li style="margin:0px; font-size: 16px; color: #000000"> ${item} </li>`)
                   }
                 </main>
               </body>
