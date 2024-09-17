@@ -18,11 +18,12 @@ app.get("/", (req, res) => {
 });
 
 app.post("/sendmailintegral", async (req, res) => {
+
     const propsQueNoDebenIrAlMail = ["name_company", "domain_company", "mail_cliente"];
     const container = [];
     for(let key in req.body){
-        let propParaMail = `${key}: ${req.body[key]}`
-        if(!propsQueNoDebenIrAlMail.some((prop) => propParaMail.includes(prop))){
+        let propParaMail = `${key.toUpperCase()}: ${req.body[key]}`
+        if(!propsQueNoDebenIrAlMail.some((prop) => propParaMail.toLocaleLowerCase().includes(prop))){
           container.push(propParaMail);
         }
     };
@@ -43,7 +44,7 @@ app.post("/sendmailintegral", async (req, res) => {
                 <main>
                   <h2 style="margin-top:19px; margin-bottom:13px; text-decoration:underline;">Dejaron los siguientes datos a través del formulario de la web</h2>
                   ${
-                    container.map((item) => `<li style="font-size: 16px; color: #000000"> ${item} </li>`)
+                    container.map((item) => `<li style="margin-bottom:8px; font-size: 16px; color: #000000"> ${item} </li>`).join('')
                   }
                 </main>
               </body>
